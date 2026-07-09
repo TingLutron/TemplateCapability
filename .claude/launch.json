@@ -6,7 +6,7 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["serve_http.py"],
       "port": 3458,
-      "cwd": "/Users/twang/Downloads/Template Wireframes"
+      "cwd": "/Users/twang/Documents/Template Wireframes"
     }
   ]
 }
