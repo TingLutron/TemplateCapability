@@ -1,0 +1,6 @@
+{
+  "name": "template-wireframes",
+  "scripts": {
+    "start": "python3 serve_http.py"
+  }
+}

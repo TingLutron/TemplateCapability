@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__9353768e-08ec-410d-9393-34cc581aec50__get_design_context",
+      "mcp__9353768e-08ec-410d-9393-34cc581aec50__get_screenshot",
+      "mcp__9353768e-08ec-410d-9393-34cc581aec50__get_metadata",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3 -m http.server 3457)",
+      "Bash(curl -s http://localhost:3457/index.html)",
+      "Bash(curl -s http://localhost:3457/styles.css)",
+      "Bash(kill 19074)",
+      "Bash(kill 5035)",
+      "Bash(node --check \"/Users/mshashiprakasha/Documents/2026/Template Wireframes/app.js\")"
+    ]
+  }
+}
