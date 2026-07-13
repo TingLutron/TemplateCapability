@@ -37,6 +37,15 @@
         <div class="flow-card-path">▸ 5-step spotlight tour</div>
       </div>
     </div>
+    <div class="flow-card" onclick="goTo('ab-home')">
+      <div class="flow-card-icon">🔀</div>
+      <div class="flow-card-title">A/B — Edit Template &amp; Linked Product</div>
+      <div class="flow-card-desc">Side-by-side exploration of two editing flows for templates and their linked products.</div>
+      <div class="flow-card-paths">
+        <div class="flow-card-path">▸ Edit template</div>
+        <div class="flow-card-path">▸ Edit linked product</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2409,6 +2418,684 @@
   </div>
 
 </div><!-- end cd-home -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- A/B — Edit Template & Linked Product: Starting State                   -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="screen" id="ab-home">
+
+  <!-- Top Navigation Bar -->
+  <div class="cd-topnav">
+    <div class="cd-topnav-brand">
+      <svg class="cd-lutron-mark" width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 1.5L11 20.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M2.5 6.5L19.5 15.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M2.5 15.5L19.5 6.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <div class="cd-brand-divider"></div>
+      <span class="cd-brand-connect">CONNECT</span>
+      <span class="cd-brand-design">DESIGN</span>
+    </div>
+    <button class="cd-topnav-breadcrumb">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="cd-bc-icon">
+        <rect x="3" y="7" width="14" height="11" rx="1" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M7 18V13H13V18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 11H7.01M10 11H10.01M13 11H13.01M7 9H7.01M10 9H10.01M13 9H13.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7 4L10 2L13 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="cd-bc-project">Genesis_200 Nathan Hale</span>
+      <span class="cd-bc-sep">/</span>
+      <span class="cd-bc-page">Untitled</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="cd-bc-chevron">
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="cd-topnav-actions">
+      <button class="cd-nav-icon-btn" title="History">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M10 6.5V10L12.5 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cd-nav-icon-btn" title="More options">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="5" cy="10" r="1.3" fill="currentColor"/><circle cx="10" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/></svg>
+      </button>
+      <div class="cd-topnav-divider"></div>
+      <button class="cd-nav-icon-btn" title="Notifications">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.5C7.5 2.5 5.5 4.5 5.5 7V12L4 13.5H16L14.5 12V7C14.5 4.5 12.5 2.5 10 2.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 13.5C8.5 14.3284 9.17157 15 10 15C10.8284 15 11.5 14.3284 11.5 13.5" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+      <button class="cd-nav-icon-btn" title="Help">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 8C8 6.89543 8.89543 6 10 6C11.1046 6 12 6.89543 12 8C12 8.9 11.5 9.6 10.5 10.1C10.2 10.3 10 10.6 10 11.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="10" cy="13.5" r="0.8" fill="currentColor"/></svg>
+      </button>
+      <div class="cd-avatar">NA</div>
+    </div>
+  </div>
+
+  <!-- App Body -->
+  <div class="cd-body">
+
+    <!-- Vertical Left Nav -->
+    <nav class="cd-leftnav">
+      <div class="cd-leftnav-top">
+        <button class="cd-leftnav-btn active" title="Design">
+          <div class="cd-leftnav-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M9 14H19M14 9V19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="15" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="5" y="15" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="15" y="15" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <span class="cd-leftnav-label">Design</span>
+        </button>
+        <button class="cd-leftnav-btn" title="BOM">
+          <div class="cd-leftnav-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="7" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="5" y="16" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M14 9H23M14 18H23M14 12H20M14 21H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <span class="cd-leftnav-label">BOM</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Areas Panel -->
+    <div class="cd-areas-panel">
+      <div class="cd-areas-header">
+        <div class="cd-areas-header-left">
+          <button class="cd-icon-btn" title="Collapse all areas">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h10M3 10h7M3 15h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M15 8l2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="cd-areas-title">Areas</span>
+        </div>
+        <div class="cd-areas-header-actions">
+          <button class="cd-icon-btn" title="Search areas">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <button class="cd-icon-btn" title="Add area">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="cd-area-list">
+        <div class="cd-area-row selected" data-depth="0">
+          <div class="cd-area-drag-handle" title="Drag to reorder"><svg width="12" height="16" viewBox="0 0 12 16" fill="none"><circle cx="4" cy="3.5" r="1.2" fill="currentColor"/><circle cx="8" cy="3.5" r="1.2" fill="currentColor"/><circle cx="4" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="4" cy="12.5" r="1.2" fill="currentColor"/><circle cx="8" cy="12.5" r="1.2" fill="currentColor"/></svg></div>
+          <div class="cd-area-indent"></div>
+          <svg class="cd-area-expand cd-area-expand--hidden" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 3L7 6L4 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="cd-area-name">Area 001</span>
+          <div class="cd-area-row-actions">
+            <button class="cd-icon-btn cd-icon-btn-sm" title="Add child area">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V10.5M5.5 8H10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </button>
+            <button class="cd-icon-btn cd-icon-btn-sm" title="More">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="3" r="1" fill="currentColor"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="11" r="1" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="cd-areas-footer">
+        <div class="cd-footer-line"><span class="cd-footer-label">Total</span><span class="cd-footer-value">$21,000 - $40,800</span></div>
+        <div class="cd-footer-line"><span class="cd-footer-label">Ship Date</span><span class="cd-footer-value">TBD</span></div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="cd-main">
+      <div class="cd-area-view-header">
+        <span class="cd-area-view-title">Area 001</span>
+        <button class="cd-icon-btn" title="Collapse area panel">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Table Header -->
+      <div class="cd-table-header">
+        <div class="cd-table-th cd-table-th--check">
+          <button class="cd-checkbox" title="Select all" aria-label="Select all"></button>
+        </div>
+        <div class="cd-table-th cd-table-th--name">
+          <span>Product Name</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="cd-th-sort-icon"><path d="M6 3L9 7H3L6 3Z" fill="currentColor"/></svg>
+        </div>
+        <div class="cd-table-th cd-table-th--price">
+          <span>Price and Lead Time</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="cd-th-sort-icon"><path d="M6 3L9 7H3L6 3Z" fill="currentColor" opacity="0.4"/><path d="M6 9L3 5H9L6 9Z" fill="currentColor" opacity="0.4"/></svg>
+        </div>
+        <div class="cd-table-th cd-table-th--qty">
+          <span>Quantity</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="cd-th-sort-icon"><path d="M6 3L9 7H3L6 3Z" fill="currentColor" opacity="0.4"/><path d="M6 9L3 5H9L6 9Z" fill="currentColor" opacity="0.4"/></svg>
+        </div>
+        <div class="cd-table-th cd-table-th--status">
+          <span>Config Status</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="cd-th-sort-icon"><path d="M6 3L9 7H3L6 3Z" fill="currentColor"/></svg>
+        </div>
+        <div class="cd-table-th cd-table-th--actions"></div>
+      </div>
+
+      <!-- Product Table — Flow A + Flow B -->
+      <div class="cd-product-table">
+        <!-- ── Flow A label ── -->
+        <div style="padding:8px 16px 4px;font-size:11px;font-weight:600;color:var(--text-secondary,#888);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--border-color,#e8e8e8)">Flow A — Editable linked product configure</div>
+        <!-- Row 1 — Sivoia Roller, linked to Option A template -->
+        <div class="cd-product-row" data-product-type="shade" onclick="(function(e){if(e.target.closest('[data-qty-dec],[data-qty-inc],[data-action-dup],[data-action-del],.cd-checkbox'))return;(function(){var n=document.getElementById('cd-tmpl-cfg-name');var i=document.getElementById('cd-tmpl-cfg-product-img');if(n)n.textContent='Option A';if(i){i.src='images/wt/sivoia-roller.png';i.style.display='';}  _setTmplConfigureMode('linked');_applyPanelToggle('cd-tmplcfg-right-scroll','cd-tmplcfg-right-fixture','cd-tmplcfg-right-shade','shade');_tmplCfgReturnScreen='ab-home';_tmplCfgLinkedCount=2;goTo('cd-tmpl-configure');})();})(event)" style="cursor:pointer">
+          <div class="cd-prod-check"><button class="cd-checkbox" aria-label="Select row"></button></div>
+          <div class="cd-prod-name-col">
+            <div class="cd-prod-thumb cd-prod-thumb--template">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;border-radius:3px;" alt="Sivoia Roller">
+              <div class="cd-prod-thumb-bookmark">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h8a.5.5 0 0 1 .5.5v9.5L6 9 1.5 11V1.5A.5.5 0 0 1 2 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="cd-prod-info">
+              <div class="cd-prod-title"><span class="cd-prod-title-template">Option A</span></div>
+              <div class="cd-prod-meta"><div>Sivoia QS Wired, Roller</div></div>
+            </div>
+          </div>
+          <div class="cd-prod-price-col">
+            <div class="cd-prod-price">$10,500 - $20,400</div>
+            <div class="cd-prod-leadtime">Ships in 100-150 days</div>
+          </div>
+          <div class="cd-prod-qty-col">
+            <div class="cd-prod-qty-input">
+              <span class="cd-prod-qty-num">1</span>
+              <div class="cd-prod-qty-controls">
+                <button class="cd-qty-btn" title="Decrease" data-qty-dec><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+                <button class="cd-qty-btn" title="Increase" data-qty-inc><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3v6M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="cd-prod-status-col">
+            <span class="cd-status-badge cd-status-badge--draft" data-status="draft" title="Additional action required.">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2h5l3 3v7H4V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 2v3h3" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Draft
+            </span>
+          </div>
+          <div class="cd-prod-actions-col">
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="Duplicate" data-action-dup><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm cd-icon-btn--danger" data-tip="Delete" data-action-del><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M6 5V3h4v2M6 8v4M10 8v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="More options"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="4" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12" r="1.2" fill="currentColor"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Row 2 — Sivoia Roller, linked to Option A template -->
+        <div class="cd-product-row" data-product-type="shade" onclick="(function(e){if(e.target.closest('[data-qty-dec],[data-qty-inc],[data-action-dup],[data-action-del],.cd-checkbox'))return;(function(){var n=document.getElementById('cd-tmpl-cfg-name');var i=document.getElementById('cd-tmpl-cfg-product-img');if(n)n.textContent='Option A';if(i){i.src='images/wt/sivoia-roller.png';i.style.display='';}  _setTmplConfigureMode('linked');_applyPanelToggle('cd-tmplcfg-right-scroll','cd-tmplcfg-right-fixture','cd-tmplcfg-right-shade','shade');_tmplCfgReturnScreen='ab-home';_tmplCfgLinkedCount=2;goTo('cd-tmpl-configure');})();})(event)" style="cursor:pointer">
+          <div class="cd-prod-check"><button class="cd-checkbox" aria-label="Select row"></button></div>
+          <div class="cd-prod-name-col">
+            <div class="cd-prod-thumb cd-prod-thumb--template">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;border-radius:3px;" alt="Sivoia Roller">
+              <div class="cd-prod-thumb-bookmark">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h8a.5.5 0 0 1 .5.5v9.5L6 9 1.5 11V1.5A.5.5 0 0 1 2 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="cd-prod-info">
+              <div class="cd-prod-title"><span class="cd-prod-title-template">Option A</span></div>
+              <div class="cd-prod-meta"><div>Sivoia QS Wired, Roller</div></div>
+            </div>
+          </div>
+          <div class="cd-prod-price-col">
+            <div class="cd-prod-price">$10,500 - $20,400</div>
+            <div class="cd-prod-leadtime">Ships in 100-150 days</div>
+          </div>
+          <div class="cd-prod-qty-col">
+            <div class="cd-prod-qty-input">
+              <span class="cd-prod-qty-num">1</span>
+              <div class="cd-prod-qty-controls">
+                <button class="cd-qty-btn" title="Decrease" data-qty-dec><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+                <button class="cd-qty-btn" title="Increase" data-qty-inc><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3v6M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="cd-prod-status-col">
+            <span class="cd-status-badge cd-status-badge--draft" data-status="draft" title="Additional action required.">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2h5l3 3v7H4V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 2v3h3" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Draft
+            </span>
+          </div>
+          <div class="cd-prod-actions-col">
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="Duplicate" data-action-dup><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm cd-icon-btn--danger" data-tip="Delete" data-action-del><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M6 5V3h4v2M6 8v4M10 8v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="More options"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="4" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12" r="1.2" fill="currentColor"/></svg></button>
+          </div>
+        </div>
+        <!-- ── Flow B label ── -->
+        <div style="padding:8px 16px 4px;font-size:11px;font-weight:600;color:var(--text-secondary,#888);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--border-color,#e8e8e8);margin-top:4px">Flow B — Read-only linked product configure</div>
+
+        <!-- Row 1 — Aviena keypad, linked to Option B template -->
+        <div class="cd-product-row" data-product-type="shade" onclick="(function(e){if(e.target.closest('[data-qty-dec],[data-qty-inc],[data-action-dup],[data-action-del],.cd-checkbox'))return;goTo('ab-readonly-configure');})(event)" style="cursor:pointer">
+          <div class="cd-prod-check"><button class="cd-checkbox" aria-label="Select row"></button></div>
+          <div class="cd-prod-name-col">
+            <div class="cd-prod-thumb cd-prod-thumb--template">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;border-radius:3px;" alt="Sivoia Roller">
+              <div class="cd-prod-thumb-bookmark">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h8a.5.5 0 0 1 .5.5v9.5L6 9 1.5 11V1.5A.5.5 0 0 1 2 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="cd-prod-info">
+              <div class="cd-prod-title"><span class="cd-prod-title-template">Option B</span></div>
+              <div class="cd-prod-meta"><div>Sivoia QS Wired, Roller</div></div>
+            </div>
+          </div>
+          <div class="cd-prod-price-col">
+            <div class="cd-prod-price">$1,800 - $2,400</div>
+            <div class="cd-prod-leadtime">Ships in 60-80 days</div>
+          </div>
+          <div class="cd-prod-qty-col">
+            <div class="cd-prod-qty-input">
+              <span class="cd-prod-qty-num">1</span>
+              <div class="cd-prod-qty-controls">
+                <button class="cd-qty-btn" title="Decrease" data-qty-dec><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+                <button class="cd-qty-btn" title="Increase" data-qty-inc><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3v6M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="cd-prod-status-col">
+            <span class="cd-status-badge cd-status-badge--valid" data-status="valid">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Valid
+            </span>
+          </div>
+          <div class="cd-prod-actions-col">
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="Duplicate" data-action-dup><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm cd-icon-btn--danger" data-tip="Delete" data-action-del><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M6 5V3h4v2M6 8v4M10 8v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="More options"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="4" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12" r="1.2" fill="currentColor"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Row 2 — Aviena keypad, linked to Option B template -->
+        <div class="cd-product-row" data-product-type="shade" onclick="(function(e){if(e.target.closest('[data-qty-dec],[data-qty-inc],[data-action-dup],[data-action-del],.cd-checkbox'))return;goTo('ab-readonly-configure');})(event)" style="cursor:pointer">
+          <div class="cd-prod-check"><button class="cd-checkbox" aria-label="Select row"></button></div>
+          <div class="cd-prod-name-col">
+            <div class="cd-prod-thumb cd-prod-thumb--template">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;border-radius:3px;" alt="Sivoia Roller">
+              <div class="cd-prod-thumb-bookmark">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1h8a.5.5 0 0 1 .5.5v9.5L6 9 1.5 11V1.5A.5.5 0 0 1 2 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="cd-prod-info">
+              <div class="cd-prod-title"><span class="cd-prod-title-template">Option B</span></div>
+              <div class="cd-prod-meta"><div>Sivoia QS Wired, Roller</div></div>
+            </div>
+          </div>
+          <div class="cd-prod-price-col">
+            <div class="cd-prod-price">$1,800 - $2,400</div>
+            <div class="cd-prod-leadtime">Ships in 60-80 days</div>
+          </div>
+          <div class="cd-prod-qty-col">
+            <div class="cd-prod-qty-input">
+              <span class="cd-prod-qty-num">1</span>
+              <div class="cd-prod-qty-controls">
+                <button class="cd-qty-btn" title="Decrease" data-qty-dec><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+                <button class="cd-qty-btn" title="Increase" data-qty-inc><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3v6M3 6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="cd-prod-status-col">
+            <span class="cd-status-badge cd-status-badge--valid" data-status="valid">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Valid
+            </span>
+          </div>
+          <div class="cd-prod-actions-col">
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="Duplicate" data-action-dup><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm cd-icon-btn--danger" data-tip="Delete" data-action-del><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M6 5V3h4v2M6 8v4M10 8v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></button>
+            <button class="cd-icon-btn cd-icon-btn-sm" data-tip="More options"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="4" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12" r="1.2" fill="currentColor"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Toolbar -->
+      <div class="cd-bottom-toolbar">
+        <button class="cd-bottom-btn" title="Collapse area panel">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 3V21" stroke="currentColor" stroke-width="1.5"/><path d="M5 9L3.5 10.5L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="cd-bottom-right">
+          <button class="cd-bottom-btn" title="Undo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 8H14C17.3137 8 20 10.6863 20 14C20 17.3137 17.3137 20 14 20H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 4.5L4 8L7.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-bottom-btn" title="Redo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 8H10C6.68629 8 4 10.6863 4 14C4 17.3137 6.68629 20 10 20H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16.5 4.5L20 8L16.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span class="cd-save-status">Saved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Products Right Sidebar -->
+    <div class="cd-addproducts-panel">
+      <div class="cd-addproducts-header">Add Products</div>
+      <div class="cd-addproducts-list">
+        <button class="cd-addproduct-item cd-addproduct-item--search" title="Search">
+          <div class="cd-addproduct-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.6"/><path d="M15 15L19 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <span class="cd-addproduct-label">Search</span>
+        </button>
+        <button class="cd-addproduct-item cd-addproduct-item--lighting" title="Lighting">
+          <div class="cd-addproduct-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C7.68629 3 5 5.68629 5 9C5 11.2 6.2 13.1 8 14.2V16H14V14.2C15.8 13.1 17 11.2 17 9C17 5.68629 14.3137 3 11 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 17H14M9 19H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <span class="cd-addproduct-label">Lighting</span>
+        </button>
+        <button class="cd-addproduct-item cd-addproduct-item--window" title="Window Treatment">
+          <div class="cd-addproduct-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="2" rx="1" fill="currentColor"/><path d="M5 5V19M17 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5 7H17M5 10H17M5 13H17M5 16H17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <span class="cd-addproduct-label">Window Treatment</span>
+        </button>
+        <button class="cd-addproduct-item cd-addproduct-item--controls" title="Controls">
+          <div class="cd-addproduct-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="5" y="3" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="6" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="13" r="1.2" fill="currentColor"/><circle cx="13" cy="13" r="1.2" fill="currentColor"/><circle cx="9" cy="16" r="1.2" fill="currentColor"/><circle cx="13" cy="16" r="1.2" fill="currentColor"/></svg></div>
+          <span class="cd-addproduct-label">Controls</span>
+        </button>
+        <button class="cd-addproduct-item cd-addproduct-item--equipment" title="Equipment">
+          <div class="cd-addproduct-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="5" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="18" cy="5" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="4" cy="17" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="18" cy="17" r="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 6L9 9M13 13L16.5 16M13 9L16.5 6M9 13L5.5 16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <span class="cd-addproduct-label">Equipment</span>
+        </button>
+      </div>
+      <div class="cd-addproducts-template-section">
+        <div class="cd-addproducts-divider"></div>
+        <button class="cd-addproduct-item cd-addproduct-item--template" id="ab-tmpl-btn" title="Templates" onclick="(function(btn){var p=document.getElementById('ab-tmpl-panel');var open=p.classList.toggle('open');p.setAttribute('aria-hidden',!open);btn.classList.toggle('active',open);})(this)">
+          <div class="cd-addproduct-icon" style="position:relative;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="11" width="7" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="11" width="7" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <span class="cd-addproduct-label">Templates</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Templates side panel (pre-populated with Option A) -->
+    <div class="cd-templates-panel" id="ab-tmpl-panel" aria-hidden="true">
+      <div class="cd-templates-panel-header">
+        <span class="cd-templates-panel-title">Templates</span>
+        <button class="cd-icon-btn" title="Close" onclick="document.getElementById('ab-tmpl-panel').classList.remove('open');document.getElementById('ab-tmpl-panel').setAttribute('aria-hidden','true');document.getElementById('ab-tmpl-btn').classList.remove('active')">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="cd-templates-panel-search">
+        <div class="cd-tmpl-search-wrap">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <input type="text" placeholder="Search templates" class="cd-tmpl-search-input"/>
+        </div>
+      </div>
+      <div class="cd-templates-panel-body">
+        <div class="cd-templates-recent-label" style="padding:12px 16px 4px;font-size:12px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em">Recent</div>
+        <div class="cd-templates-recent-list" style="padding:8px 12px;display:flex;flex-direction:column;gap:8px">
+          <!-- Option A template card — linked to 2 products -->
+          <div class="template-card" style="cursor:pointer" onclick="_tmplCfgReturnScreen='ab-home';_tmplCfgLinkedCount=2;_openTemplateEditMode(this);(function(){var c=document.getElementById('cd-tmpl-linked-count');var u=document.getElementById('cd-tmpl-linked-unit');if(c)c.textContent='2';if(u)u.textContent='products';})()">
+            <div class="template-card-img-wrap">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;padding:8px;" alt="Sivoia Roller">
+              <div class="template-card-bookmark-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 1h7a.5.5 0 0 1 .5.5v8L5 7.5 1 9.5V1.5A.5.5 0 0 1 1.5 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="template-card-info">
+              <div class="template-card-row1">
+                <span class="template-card-name">Option A</span>
+                <div class="template-card-row1-right">
+                  <span class="template-card-valid-badge">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Valid
+                  </span>
+                  <button class="template-card-more-btn" aria-label="More options">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="3.5" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12.5" r="1.2" fill="currentColor"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="template-card-desc">Sivoia QS Wired, Roller — Inside Mount</div>
+              <div class="template-card-bottom">
+                <div class="template-card-linked">Template linked to <strong>2</strong> products</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option B template card — Flow B -->
+          <div class="template-card" style="cursor:pointer" onclick="_tmplCfgReturnScreen='ab-home';_tmplCfgLinkedCount=2;_openTemplateEditMode(this);(function(){var c=document.getElementById('cd-tmpl-linked-count');var u=document.getElementById('cd-tmpl-linked-unit');if(c)c.textContent='2';if(u)u.textContent='products';})()">
+            <div class="template-card-img-wrap">
+              <img src="images/wt/sivoia-roller.png" style="width:100%;height:100%;object-fit:contain;padding:8px;" alt="Sivoia Roller">
+              <div class="template-card-bookmark-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 1h7a.5.5 0 0 1 .5.5v8L5 7.5 1 9.5V1.5A.5.5 0 0 1 1.5 1z" fill="#006dcc"/></svg>
+              </div>
+            </div>
+            <div class="template-card-info">
+              <div class="template-card-row1">
+                <span class="template-card-name">Option B</span>
+                <div class="template-card-row1-right">
+                  <span class="template-card-valid-badge">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Valid
+                  </span>
+                  <button class="template-card-more-btn" aria-label="More options">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="3.5" r="1.2" fill="currentColor"/><circle cx="8" cy="8" r="1.2" fill="currentColor"/><circle cx="8" cy="12.5" r="1.2" fill="currentColor"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="template-card-desc">Sivoia QS Wired, Roller — Inside Mount</div>
+              <div class="template-card-bottom">
+                <div class="template-card-linked">Template linked to <strong>2</strong> products</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end cd-body -->
+
+  <!-- Back to Home -->
+  <div style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100">
+    <button class="btn btn-secondary btn-sm" onclick="goTo('home')" style="background:var(--surface-bg);box-shadow:0 2px 8px rgba(0,0,0,0.15)">← Back to Home</button>
+  </div>
+
+</div><!-- end ab-home -->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     Flow B: Read-only linked product configure screen
+     Figma: node 33802-23523 "Edit a Linked Product Line"
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="screen" id="ab-readonly-configure">
+
+  <!-- Top Navigation Bar -->
+  <div class="cd-topnav">
+    <div class="cd-topnav-brand">
+      <svg class="cd-lutron-mark" width="16" height="16" viewBox="0 0 22 22" fill="none">
+        <path d="M11 1.5L11 20.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M2.5 6.5L19.5 15.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M2.5 15.5L19.5 6.5" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <div class="cd-brand-divider"></div>
+      <span class="cd-brand-connect">CONNECT</span>
+      <span class="cd-brand-design">DESIGN</span>
+    </div>
+    <button class="cd-topnav-breadcrumb">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="cd-bc-icon">
+        <rect x="3" y="7" width="14" height="11" rx="1" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M7 18V13H13V18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 11H7.01M10 11H10.01M13 11H13.01M7 9H7.01M10 9H10.01M13 9H13.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M7 4L10 2L13 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="cd-bc-project">Genesis_200 Nathan Hale</span>
+      <span class="cd-bc-sep">/</span>
+      <span class="cd-bc-page">Untitled</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="cd-bc-chevron">
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="cd-topnav-actions">
+      <button class="cd-nav-icon-btn" data-tip="History">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M10 6.5V10L12.5 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="cd-nav-icon-btn" data-tip="More options">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="5" cy="10" r="1.3" fill="currentColor"/>
+          <circle cx="10" cy="10" r="1.3" fill="currentColor"/>
+          <circle cx="15" cy="10" r="1.3" fill="currentColor"/>
+        </svg>
+      </button>
+      <div class="cd-nav-avatar">NA</div>
+    </div>
+  </div>
+
+  <!-- Sub-header: Flow B read-only header (Figma: Configuration - Header) -->
+  <div class="cd-tmpl-header" style="gap:12px">
+    <!-- Back -->
+    <button class="cd-tmpl-back-btn" onclick="goTo('ab-home')" data-tip="Back">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Product name (blue bold) -->
+    <span style="font-size:22px;font-weight:700;color:#006dcc;white-space:nowrap;flex-shrink:0">Option B</span>
+
+    <!-- Breadcrumb -->
+    <span style="font-size:14px;color:var(--text-secondary,#666);white-space:nowrap;flex-shrink:0">Area 001 | Living Room</span>
+
+    <!-- Spacer -->
+    <div style="flex:1;min-width:0"></div>
+
+    <!-- Template linked chip -->
+    <div class="cd-tmpl-header-badge cd-tmpl-header-badge--template" style="flex-shrink:0">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M4 2.5h12a1 1 0 0 1 1 1v13.5L10 14l-7 3V3.5a1 1 0 0 1 1-1z" fill="#005199"/>
+      </svg>
+      <span class="cd-tmpl-chip-label">Template linked to <strong>2</strong> products</span>
+    </div>
+
+    <!-- Detach from Template (secondary pill) -->
+    <button class="cd-tmpl-header-btn" style="flex-shrink:0;border-radius:20px;background:rgba(0,0,0,0.06);border:none" onclick="_openDetach('ab-readonly-configure')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M8 12.5l-2.5 2.5a2.5 2.5 0 0 0 3.54 3.54l3.75-3.75a2.5 2.5 0 0 0 0-3.54" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M12.5 7.5l2.5-2.5a2.5 2.5 0 0 0-3.54-3.54L7.71 5.21a2.5 2.5 0 0 0 0 3.54" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M10.5 9.5l-1 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Detach from Template
+    </button>
+
+    <!-- Edit Template (primary blue pill) -->
+    <button style="flex-shrink:0;border-radius:20px;background:#006dcc;color:#fff;border:none;padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:0" onclick="_tmplCfgReturnScreen='ab-home';_tmplCfgLinkedCount=2;_openTemplateEditMode(document.querySelector('#ab-tmpl-panel .template-card:nth-child(2)'));(function(){var c=document.getElementById('cd-tmpl-linked-count');var u=document.getElementById('cd-tmpl-linked-unit');if(c)c.textContent='2';if(u)u.textContent='products';})()">
+      Edit Template
+    </button>
+  </div>
+
+  <!-- Main configure body (read-only) -->
+  <div class="cd-cfg-body" style="position:relative">
+
+    <!-- Read-only overlay — blocks interaction with the form -->
+    <div style="position:absolute;inset:0;z-index:10;cursor:not-allowed;background:transparent"></div>
+
+    <!-- Left: product image + summary -->
+    <div class="cd-cfg-left">
+      <div class="cd-cfg-img-wrap">
+        <img class="cd-cfg-product-img" src="images/wt/sivoia-roller.png" alt="Sivoia Roller" style="opacity:0.85">
+        <div class="cd-cfg-img-actions">
+          <button class="cd-cfg-img-btn" data-tip="Download">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 3v8M6 8l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 14h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="cd-cfg-img-btn" data-tip="Expand">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M11 3h4v4M7 15H3v-4M15 3l-5 5M3 15l5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cd-cfg-summary" style="opacity:0.65">
+        <div class="cd-cfg-summary-title">Product Summary</div>
+        <div class="cd-cfg-summary-group">
+          <div class="cd-cfg-summary-group-label">Basics</div>
+          <div class="cd-cfg-summary-value">Sivoia QS Wired, Roller Shade</div>
+        </div>
+        <div class="cd-cfg-summary-group">
+          <div class="cd-cfg-summary-group-label">Mounting</div>
+          <div class="cd-cfg-summary-value">Inside Mount</div>
+        </div>
+        <div class="cd-cfg-summary-group">
+          <div class="cd-cfg-summary-group-label">Fabric</div>
+          <div class="cd-cfg-summary-value">Anderson 1%, Charcoal</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: configure form (read-only, dimmed) — matches cd-tmplcfg-right-shade fields -->
+    <div class="cd-cfg-right cd-cfg-right--shade" style="opacity:0.5;user-select:none">
+
+      <!-- ── DIMENSIONS ── -->
+      <div class="cd-cfg-section-title">Dimensions</div>
+      <div class="cd-cfg-field-row">
+        <div class="cd-cfg-field">
+          <div class="cd-cfg-field-label">Width (inches)</div>
+          <div class="cd-cfg-dim-input-wrap">
+            <input class="cd-cfg-dim-input" type="number" value="48" tabindex="-1"/>
+            <div class="cd-cfg-custom-select cd-cfg-dim-frac">
+              <button class="cd-cfg-select-trigger"><span class="cd-cfg-select-value">0</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="cd-cfg-field">
+          <div class="cd-cfg-field-label">Height (inches)</div>
+          <div class="cd-cfg-dim-input-wrap">
+            <input class="cd-cfg-dim-input" type="number" value="72" tabindex="-1"/>
+            <div class="cd-cfg-custom-select cd-cfg-dim-frac">
+              <button class="cd-cfg-select-trigger"><span class="cd-cfg-select-value">0</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cd-cfg-field">
+        <div class="cd-cfg-field-label">Mounting</div>
+        <div class="cd-cfg-visual-picker">
+          <div class="cd-cfg-visual-option selected"><div class="cd-cfg-visual-card cd-cfg-visual-card--shape"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="44" height="44" rx="2" fill="none" stroke="#bbb" stroke-width="3"/><rect x="16" y="16" width="28" height="28" fill="#bbb"/></svg><div class="cd-cfg-visual-check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div></div><span>Inside</span></div>
+          <div class="cd-cfg-visual-option"><div class="cd-cfg-visual-card cd-cfg-visual-card--shape"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="52" height="52" fill="#bbb"/><rect x="12" y="12" width="36" height="36" fill="none" stroke="#fff" stroke-width="2"/></svg><div class="cd-cfg-visual-check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div></div><span>Outside</span></div>
+        </div>
+      </div>
+
+      <!-- ── FABRIC ── -->
+      <div class="cd-cfg-section-title">Fabric</div>
+      <div class="cd-cfg-shade-filter-bar">
+        <span class="cd-cfg-field-label">Filter by</span>
+        <div class="cd-cfg-shade-chips">
+          <button class="cd-cfg-shade-chip">Collection <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-chip cd-cfg-shade-chip--active">Color <span class="cd-cfg-shade-chip-count">2</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-chip">Openness <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-chip cd-cfg-shade-chip--active">Price <span class="cd-cfg-shade-chip-count">2</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-chip">Environmental <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-chip">Physical <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <span class="cd-cfg-shade-filter-count">100 Available Fabrics</span>
+      </div>
+      <div class="cd-cfg-field">
+        <div class="cd-cfg-field-label">Fabric</div>
+        <div class="cd-cfg-custom-select">
+          <button class="cd-cfg-select-trigger"><span class="cd-cfg-shade-swatch" style="background:#3a3028"></span><span class="cd-cfg-select-value">Anderson 1%, Charcoal <span class="cd-cfg-shade-model">(Model: RF-AND1-09)</span></span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <div class="cd-cfg-shade-preview">
+        <div class="cd-cfg-shade-swatch-box" style="background:#3a3028">
+          <button class="cd-cfg-img-btn" style="position:absolute;bottom:12px;left:12px;background:white"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M5 8l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+          <button class="cd-cfg-img-btn" style="position:absolute;bottom:12px;right:12px;background:white"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.5 2H14v4.5M6.5 14H2v-4.5M14 2l-4.5 4.5M2 14l4.5-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cd-cfg-shade-preview-actions">
+          <button class="cd-cfg-shade-link-btn">Fabric Details <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M6 2H2v10h10V8M8 2h4v4M6 8l4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cd-cfg-shade-link-btn">Care Guide <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M6 2H2v10h10V8M8 2h4v4M6 8l4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <!-- ── TECHNOLOGY ── -->
+      <div class="cd-cfg-section-title">Technology</div>
+      <div class="cd-cfg-field-row">
+        <div class="cd-cfg-field"><div class="cd-cfg-field-label">Technology</div><div class="cd-cfg-custom-select"><button class="cd-cfg-select-trigger"><span class="cd-cfg-select-value">Sivoia QS</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+        <div class="cd-cfg-field"><div class="cd-cfg-field-label">Operator Position</div><div class="cd-cfg-radio-group"><label><input type="radio" name="ab-ro-operator" value="left" checked tabindex="-1"> Left</label><label><input type="radio" name="ab-ro-operator" value="right" tabindex="-1"> Right</label></div></div>
+      </div>
+
+      <!-- ── TOP TREATMENT & BRACKET ── -->
+      <div class="cd-cfg-section-title">Top Treatment &amp; Bracket</div>
+      <div class="cd-cfg-field"><div class="cd-cfg-field-label">Top Treatment</div><div class="cd-cfg-custom-select"><button class="cd-cfg-select-trigger"><span class="cd-cfg-select-value">2 in Brackets Only</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+
+      <!-- ── ADDITIONAL OPTIONS ── -->
+      <div class="cd-cfg-section-title cd-cfg-accordion-trigger" style="pointer-events:none">Additional Options <svg class="cd-cfg-accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cd-cfg-accordion-body" style="display:none">
+        <div class="cd-cfg-field"><div class="cd-cfg-field-label">Parts Color</div><div class="cd-cfg-custom-select"><button class="cd-cfg-select-trigger"><span class="cd-cfg-select-value">Architectural White</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+      </div>
+      <div style="height:32px;"></div>
+
+    </div><!-- end cd-cfg-right -->
+  </div><!-- end cd-cfg-body -->
+
+  <!-- Footer -->
+  <div class="cd-cfg-footer">
+    <div class="cd-cfg-footer-price" style="opacity:0.25">
+      <div class="cd-cfg-price">USD $1,000.00/unit</div>
+      <div class="cd-cfg-leadtime">Ships in 20 business days</div>
+    </div>
+    <div class="cd-cfg-footer-actions"></div>
+  </div>
+
+</div><!-- end ab-readonly-configure -->
+
 
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
 <!-- Configure Product Screen                                                -->
@@ -5615,6 +6302,6 @@
   </div>
 </div>
 
-<script src="app.js?v=185"></script>
+<script src="app.js?v=187"></script>
 </body>
 </html>

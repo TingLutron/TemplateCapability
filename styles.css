@@ -3490,6 +3490,16 @@ body {
   background: rgba(0,109,204,0.04);
 }
 
+@keyframes tmpl-card-updated {
+  0%   { box-shadow: 0 0 0 0 rgba(0,109,204,0.55), 0 0 0 4px rgba(0,109,204,0.18); background: rgba(0,109,204,0.08); }
+  60%  { box-shadow: 0 0 0 3px rgba(0,109,204,0.3),  0 0 0 7px rgba(0,109,204,0.08); background: rgba(0,109,204,0.04); }
+  100% { box-shadow: none; background: transparent; }
+}
+.template-card--updated {
+  animation: tmpl-card-updated 1.6s ease-out forwards;
+  border: 1.5px solid rgba(0,109,204,0.4);
+}
+
 /* ── Templates panel empty state ─────────────────────────────────────────── */
 .cd-templates-empty-state {
   display: flex;

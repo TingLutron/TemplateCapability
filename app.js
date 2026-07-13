@@ -571,6 +571,40 @@ function _findTemplateCard(name) {
   }) || null;
 }
 
+// Find the VISIBLE rendered clone of a template card by name.
+// The sorted panel and ab-tmpl-panel hold cloneNode(true) copies; the hidden
+// source cards live in #cd-templates-recent-list. Highlighting must target the
+// visible clone so the animation is actually seen.
+function _findVisibleCard(name) {
+  var containers = ['cd-tmpl-sorted-body', 'ab-tmpl-panel'];
+  for (var i = 0; i < containers.length; i++) {
+    var container = document.getElementById(containers[i]);
+    if (!container) continue;
+    var found = Array.from(container.querySelectorAll('.template-card')).find(function (c) {
+      return c.querySelector('.template-card-name')?.textContent.trim() === name;
+    });
+    if (found) return found;
+  }
+  return _findTemplateCard(name); // fallback to hidden source card
+}
+
+function _highlightTemplateCard(cardEl) {
+  if (!cardEl) return;
+  cardEl.classList.remove('template-card--updated');
+  void cardEl.offsetWidth; // restart animation
+  cardEl.classList.add('template-card--updated');
+  setTimeout(function () { cardEl.classList.remove('template-card--updated'); }, 1700);
+}
+
+function _resolveHighlightCard(editSourceCard) {
+  if (editSourceCard) return editSourceCard;
+  // Fallback: find by template name (covers cd-tmpl-configure path where _editSourceCard is null)
+  var tmplScreen = document.getElementById('cd-template');
+  var name = (tmplScreen && tmplScreen.dataset.templateName) ||
+             document.getElementById('cd-tmpl-cfg-name')?.textContent.trim() || '';
+  return name ? _findTemplateCard(name) : null;
+}
+
 // Increment or decrement a template card's linked-product count
 function _adjustTemplateCardCount(name, delta) {
   var card = _findTemplateCard(name);
@@ -1364,6 +1398,7 @@ function _addFromTemplate(status) {
   if (_tmplPanel) { _tmplPanel.classList.add('open'); _tmplPanel.setAttribute('aria-hidden', 'false'); }
   if (_tmplBtn)   { _tmplBtn.classList.add('active'); document.getElementById('cd-template-alert-dot')?.classList.remove('visible'); }
   if (window._renderTemplateSort) window._renderTemplateSort();
+  _highlightTemplateCard(_findVisibleCard(templateName));
 }
 
 function _makeProductRowFromSearch(modelName, desc) {
@@ -1505,31 +1540,16 @@ function _makeProductRowFromSearch(modelName, desc) {
     });
   });
 
-  // Navigate to configure screen on product card click
+  // Navigate to configure screen on product card click (always type='shade')
   panel.addEventListener('click', function (e) {
     const card = e.target.closest('.cd-ctrl-card');
     if (!card) return;
+    // If card has an inline onclick, _openConfigure was already called — just close panel
+    if (typeof card.onclick === 'function') { closePanel(); return; }
     const name = card.querySelector('.cd-ctrl-card-name')?.textContent.trim() || 'Product';
     const img  = card.querySelector('img')?.src || '';
     closePanel();
-    const nameEl = document.getElementById('cd-cfg-product-name');
-    const imgEl  = document.getElementById('cd-cfg-product-img');
-    const descEl = document.getElementById('cd-cfg-desc');
-    if (nameEl) nameEl.textContent = name;
-    if (imgEl && img) imgEl.src = img;
-    if (descEl) descEl.textContent = 'HomeWorks(QSX), ' + name;
-    const bc = document.getElementById('cd-cfg-breadcrumb');
-    const bdg = document.getElementById('cd-cfg-template-badge');
-    if (bc) bc.style.display = '';
-    if (bdg) bdg.style.display = 'none';
-    const saveBtnEl  = document.getElementById('cd-cfg-save-template-btn');
-    const savedRight = document.getElementById('cd-cfg-saved-right');
-    if (nameEl)     nameEl.classList.remove('cd-cfg-product-name--saved');
-    if (saveBtnEl)  saveBtnEl.style.display = '';
-    if (savedRight) savedRight.style.display = 'none';
-    var _cfg = document.getElementById('cd-configure'); if (_cfg) _cfg.dataset.sourceRowId = '';
-    _setCfgFooterMode('add');
-    goTo('cd-configure');
+    _openConfigure(name, img, 'shade');
   });
 }());
 
@@ -2102,6 +2122,8 @@ function _tmplBackBtn() {
 
 // ── Detach this Product ────────────────────────────────────────────────────
 // _detachSourceRowId: row being detached (set before opening modal)
+var _tmplCfgReturnScreen = 'cd-home';
+var _tmplCfgLinkedCount  = -1; // -1 = use live count from #cd-product-table
 var _detachSourceRowId = null;
 var _detachOrigin = 'configure'; // 'configure' | 'list'
 
@@ -2958,7 +2980,9 @@ function _setTmplFooterMode(mode) {
   if (!draftBtn || !saveBtn) return;
 
   if (mode === 'edit') {
-    draftBtn.style.display = 'none';
+    draftBtn.style.display = '';
+    draftBtn.textContent = 'Save as Draft';
+    draftBtn.onclick = function () { _onTmplSaveChangesAsDraft(); };
     saveBtn.textContent = 'Save Changes';
     saveBtn.onclick = function () { _onTmplSaveChanges(); };
   } else if (mode === 'save') {
@@ -2978,7 +3002,11 @@ function _setTmplFooterMode(mode) {
 // Save Changes handler — shows "Update linked products?" modal when products are linked,
 // otherwise saves directly. Works for both #cd-template and #cd-tmpl-configure.
 function _onTmplSaveChanges() {
-  var n = _countLinkedProducts();
+  var _tmplScreen = document.getElementById('cd-template');
+  var _stored = _tmplScreen ? parseInt(_tmplScreen.dataset.abLinkedCount) : NaN;
+  var n = _tmplCfgLinkedCount >= 0 ? _tmplCfgLinkedCount : (!isNaN(_stored) ? _stored : _countLinkedProducts());
+  if (_tmplCfgLinkedCount >= 0 && _tmplScreen) _tmplScreen.dataset.abLinkedCount = _tmplCfgLinkedCount;
+  _tmplCfgLinkedCount = -1;
   if (n > 0) {
     var countEl = document.getElementById('cd-update-linked-count');
     var unitEl  = document.getElementById('cd-update-linked-unit');
@@ -3035,15 +3063,26 @@ function _doTmplSave() {
     }
   }
   _syncLinkedProductsToTemplateStatus(tmplScreen ? tmplScreen.dataset.templateName : '', 'valid');
-  if (tmplScreen) { tmplScreen.dataset.editMode = ''; tmplScreen._editSourceCard = null; }
+  var _savedCard = _resolveHighlightCard(tmplScreen ? tmplScreen._editSourceCard : null);
+  var _savedName = _savedCard ? (_savedCard.querySelector('.template-card-name')?.textContent.trim() || '') : '';
+  if (tmplScreen) { tmplScreen.dataset.editMode = ''; tmplScreen._editSourceCard = null; delete tmplScreen.dataset.abLinkedCount; }
   if (window._renderTemplateSort) window._renderTemplateSort();
   _setTmplFooterMode('create');
   _showToast('Template saved', 'Your changes have been saved.');
-  goTo('cd-home');
-  var _p = document.getElementById('cd-templates-panel');
-  var _b = document.querySelector('.cd-addproduct-item--template');
-  if (_p) { _p.classList.add('open'); _p.setAttribute('aria-hidden', 'false'); }
-  if (_b) _b.classList.add('active');
+  var _ret = _tmplCfgReturnScreen; _tmplCfgReturnScreen = 'cd-home';
+  goTo(_ret);
+  if (_ret === 'cd-home') {
+    var _p = document.getElementById('cd-templates-panel');
+    var _b = document.querySelector('.cd-addproduct-item--template');
+    if (_p) { _p.classList.add('open'); _p.setAttribute('aria-hidden', 'false'); }
+    if (_b) _b.classList.add('active');
+  } else if (_ret === 'ab-home') {
+    var _abp = document.getElementById('ab-tmpl-panel');
+    var _abb = document.getElementById('ab-tmpl-btn');
+    if (_abp) { _abp.classList.add('open'); _abp.setAttribute('aria-hidden', 'false'); }
+    if (_abb) _abb.classList.add('active');
+  }
+  _highlightTemplateCard(_savedName ? _findVisibleCard(_savedName) : _savedCard);
 }
 
 function _onTmplSaveChangesAsDraft() {
@@ -3059,15 +3098,26 @@ function _onTmplSaveChangesAsDraft() {
   }
   _syncLinkedProductsToTemplateStatus(tmplScreen ? tmplScreen.dataset.templateName : '', 'draft');
   _setTmplHdrStatusBadge('draft');
+  var _savedCard2 = _resolveHighlightCard(tmplScreen ? tmplScreen._editSourceCard : null);
+  var _savedName2 = _savedCard2 ? (_savedCard2.querySelector('.template-card-name')?.textContent.trim() || '') : '';
   if (tmplScreen) { tmplScreen.dataset.editMode = ''; tmplScreen._editSourceCard = null; }
   if (window._renderTemplateSort) window._renderTemplateSort();
   _setTmplFooterMode('create');
   _showToast('Template saved as draft', 'Your changes have been saved as a draft. Complete configuration to validate.');
-  goTo('cd-home');
-  var _p = document.getElementById('cd-templates-panel');
-  var _b = document.querySelector('.cd-addproduct-item--template');
-  if (_p) { _p.classList.add('open'); _p.setAttribute('aria-hidden', 'false'); }
-  if (_b) _b.classList.add('active');
+  var _ret = _tmplCfgReturnScreen; _tmplCfgReturnScreen = 'cd-home';
+  goTo(_ret);
+  if (_ret === 'cd-home') {
+    var _p = document.getElementById('cd-templates-panel');
+    var _b = document.querySelector('.cd-addproduct-item--template');
+    if (_p) { _p.classList.add('open'); _p.setAttribute('aria-hidden', 'false'); }
+    if (_b) _b.classList.add('active');
+  } else if (_ret === 'ab-home') {
+    var _abp = document.getElementById('ab-tmpl-panel');
+    var _abb = document.getElementById('ab-tmpl-btn');
+    if (_abp) { _abp.classList.add('open'); _abp.setAttribute('aria-hidden', 'false'); }
+    if (_abb) _abb.classList.add('active');
+  }
+  _highlightTemplateCard(_savedName2 ? _findVisibleCard(_savedName2) : _savedCard2);
 }
 
 // Reset footer to create mode whenever #cd-template opens fresh (non-edit)
