@@ -19,15 +19,6 @@
     <div class="home-subtitle">Clickable prototype · Tenzing Design System</div>
   </div>
   <div class="flow-cards">
-    <div class="flow-card" onclick="goTo('cd-home')">
-      <div class="flow-card-icon">🏠</div>
-      <div class="flow-card-title">Connect Design — Home</div>
-      <div class="flow-card-desc">Base wireframe of the Connect Design area view with product list and add product sidebar.</div>
-      <div class="flow-card-paths">
-        <div class="flow-card-path">▸ Area tree</div>
-        <div class="flow-card-path">▸ Product list &amp; Add Products panel</div>
-      </div>
-    </div>
     <div class="flow-card" onclick="_startOnboarding()">
       <div class="flow-card-icon">✨</div>
       <div class="flow-card-title">Templates — Onboarding</div>
@@ -35,6 +26,15 @@
       <div class="flow-card-paths">
         <div class="flow-card-path">▸ Feature announcement modal</div>
         <div class="flow-card-path">▸ 5-step spotlight tour</div>
+      </div>
+    </div>
+    <div class="flow-card" onclick="goTo('cd-home')">
+      <div class="flow-card-icon">🏠</div>
+      <div class="flow-card-title">Connect Design — Home</div>
+      <div class="flow-card-desc">Base wireframe of the Connect Design area view with product list and add product sidebar.</div>
+      <div class="flow-card-paths">
+        <div class="flow-card-path">▸ Area tree</div>
+        <div class="flow-card-path">▸ Product list &amp; Add Products panel</div>
       </div>
     </div>
     <div class="flow-card" onclick="goTo('ab-home')">
@@ -2026,7 +2026,7 @@
               <div class="cd-ctrl-card-img"><img src="assets/keypad-sunnata.png" alt="Sunnata Keypads" style="width:100%;height:100%;object-fit:cover;"/></div>
               <span class="cd-ctrl-card-name">Sunnata Keypads</span>
             </button>
-            <button class="cd-ctrl-card" onclick="_openConfigure('Palladiom Keypads','assets/keypad-palladiom.png')">
+            <button class="cd-ctrl-card" onclick="_openConfigure('Palladiom 1','assets/keypad-palladiom.png')">
               <div class="cd-ctrl-card-img"><img src="assets/keypad-palladiom.png" alt="Palladiom Keypads" style="width:100%;height:100%;object-fit:cover;"/></div>
               <span class="cd-ctrl-card-name">Palladiom Keypads</span>
             </button>
@@ -2786,14 +2786,30 @@
     <div class="cd-templates-panel" id="ab-tmpl-panel" aria-hidden="true">
       <div class="cd-templates-panel-header">
         <span class="cd-templates-panel-title">Templates</span>
-        <button class="cd-icon-btn" title="Close" onclick="document.getElementById('ab-tmpl-panel').classList.remove('open');document.getElementById('ab-tmpl-panel').setAttribute('aria-hidden','true');document.getElementById('ab-tmpl-btn').classList.remove('active')">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
+        <div class="cd-templates-header-actions">
+          <div class="cd-tmpl-sort-wrap" id="ab-tmpl-sort-wrap">
+            <button class="cd-tmpl-sort-btn" id="ab-tmpl-sort-btn" aria-label="Sort templates">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span id="ab-tmpl-sort-label">A → Z</span>
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="cd-tmpl-sort-dropdown" id="ab-tmpl-sort-dropdown" aria-hidden="true">
+              <li class="cd-tmpl-sort-option selected" data-sort="name-asc">A → Z</li>
+              <li class="cd-tmpl-sort-option" data-sort="name-desc">Z → A</li>
+              <li class="cd-tmpl-sort-option" data-sort="modified">Last Modified</li>
+            </ul>
+          </div>
+          <button class="cd-icon-btn" title="Close" onclick="document.getElementById('ab-tmpl-panel').classList.remove('open');document.getElementById('ab-tmpl-panel').setAttribute('aria-hidden','true');document.getElementById('ab-tmpl-btn').classList.remove('active')">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="cd-templates-panel-search">
-        <div class="cd-tmpl-search-wrap">
+        <div class="cd-templates-search-input">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          <input type="text" placeholder="Search templates" class="cd-tmpl-search-input"/>
+          <span class="cd-templates-search-placeholder">Search templates…</span>
         </div>
       </div>
       <div class="cd-templates-panel-body">
@@ -3154,8 +3170,8 @@
           <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <span class="cd-cfg-product-name" id="cd-cfg-product-name">Aviena Keypads</span>
-      <span class="cd-cfg-breadcrumb" id="cd-cfg-breadcrumb">Aviena | First Floor &gt; Bedroom &gt; Closet</span>
+      <span class="cd-cfg-product-name" id="cd-cfg-product-name">Palladiom 1</span>
+      <span class="cd-cfg-breadcrumb" id="cd-cfg-breadcrumb">Palladiom 1 | First Floor &gt; Bedroom &gt; Closet</span>
       <span class="cd-tmpl-hdr-status-badge cd-tmpl-hdr-status-badge--valid" id="cd-cfg-status-badge">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Valid
@@ -3178,7 +3194,7 @@
         <div class="cd-cfg-img-upload-hint">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 13V5M7 8l3-3 3 3" stroke="#aaa" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="14" width="14" height="2" rx="1" fill="#aaa"/></svg>
         </div>
-        <img class="cd-cfg-product-img" id="cd-cfg-product-img" src="assets/raw-977392a6-bac5-4c7d-a1b9-31ec345e58dd.png" alt="Aviena Keypad">
+        <img class="cd-cfg-product-img" id="cd-cfg-product-img" src="assets/keypad-palladiom.png" alt="Palladiom 1">
         <div class="cd-cfg-img-actions">
           <button class="cd-cfg-img-btn" data-tip="Download">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -3205,8 +3221,8 @@
           <div class="cd-cfg-summary-value">Aged Bronze</div>
         </div>
         <div class="cd-cfg-summary-group">
-          <div class="cd-cfg-summary-group-label">Button Layout &amp; Engraving</div>
-          <div class="cd-cfg-summary-value">2 Column, T/T, Custom Engraving</div>
+          <div class="cd-cfg-summary-group-label">Button Layout &amp; Personalization</div>
+          <div class="cd-cfg-summary-value">2 Column, T/T, Lutron Suggested</div>
         </div>
       </div>
 
@@ -3249,27 +3265,88 @@
         </div>
       </div>
 
+      <!-- Palladiom-only: Keypad Type + Control -->
+      <div class="cd-cfg-palladiom-only" style="display:none">
+        <div class="cd-cfg-field">
+          <div class="cd-cfg-triple-row">
+            <div class="cd-cfg-triple-col">
+              <label class="cd-cfg-field-label">Keypad Type</label>
+              <div class="cd-cfg-radio-group cd-cfg-radio-group--horiz">
+                <label class="cd-cfg-radio-pill"><input type="radio" name="pal-keypad-type" value="standard"><span class="cd-cfg-radio-pill-inner">Standard</span></label>
+                <label class="cd-cfg-radio-pill"><input type="radio" name="pal-keypad-type" value="hybrid" checked><span class="cd-cfg-radio-pill-inner">Hybrid</span></label>
+              </div>
+            </div>
+            <div class="cd-cfg-triple-col">
+              <label class="cd-cfg-field-label">Control</label>
+              <div class="cd-cfg-radio-group cd-cfg-radio-group--horiz">
+                <label class="cd-cfg-radio-pill"><input type="radio" name="pal-control" value="wired"><span class="cd-cfg-radio-pill-inner">Wired</span></label>
+                <label class="cd-cfg-radio-pill"><input type="radio" name="pal-control" value="wireless" checked><span class="cd-cfg-radio-pill-inner">Wireless</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Components visual picker -->
       <div class="cd-cfg-field">
         <label class="cd-cfg-field-label">Components</label>
         <div class="cd-cfg-visual-picker">
           <div class="cd-cfg-visual-option selected" data-group="components" data-value="keypad-closure">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-e80fc367-68e3-4003-9127-1de199f4d04e.png" alt="Keypad and Closure Interface">
+              <img src="assets/keypad-palladiom.png" alt="Keypad and Closure Interface">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <span class="cd-cfg-visual-label">Keypad and Closure Interface</span>
           </div>
-          <div class="cd-cfg-visual-option" data-group="components" data-value="button-kit">
+          <div class="cd-cfg-visual-option" data-group="components" data-value="replacement-keypad">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-88914a25-6720-4fc0-be1b-786f9940b7cb.png" alt="Button Kit Only">
+              <img src="assets/keypad-palladiom.png" alt="Replacement Keypad">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
-            <span class="cd-cfg-visual-label">Button Kit Only</span>
+            <span class="cd-cfg-visual-label">Replacement Keypad</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palladiom-only: Include Backbox + Backbox Shape -->
+      <div class="cd-cfg-palladiom-only" style="display:none">
+        <div class="cd-cfg-field">
+          <label class="cd-cfg-field-label">
+            Include Backbox
+            <span class="cd-cfg-info-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 6.5V10M7 4.5V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+          </label>
+          <div class="cd-cfg-radio-group cd-cfg-radio-group--horiz">
+            <label class="cd-cfg-radio-pill"><input type="radio" name="pal-backbox" value="yes"><span class="cd-cfg-radio-pill-inner">Yes</span></label>
+            <label class="cd-cfg-radio-pill"><input type="radio" name="pal-backbox" value="no" checked><span class="cd-cfg-radio-pill-inner">No</span></label>
+          </div>
+        </div>
+        <div class="cd-cfg-backbox-note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#006dcc" stroke-width="1.2"/><path d="M7 6.5V10M7 4.5V5" stroke="#006dcc" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Backbox dimensions: 75mm (2.95") × 75mm (2.95") × 65mm (2.56")
+        </div>
+        <div class="cd-cfg-field" style="margin-top:12px">
+          <label class="cd-cfg-field-label">Backbox Shape</label>
+          <div class="cd-cfg-visual-picker">
+            <div class="cd-cfg-visual-option selected" data-group="backbox-shape" data-value="square">
+              <div class="cd-cfg-visual-card cd-cfg-visual-card--shape">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="8" y="8" width="40" height="40" rx="4" stroke="currentColor" stroke-width="2"/></svg>
+                <div class="cd-cfg-visual-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <span class="cd-cfg-visual-label">Square</span>
+            </div>
+            <div class="cd-cfg-visual-option" data-group="backbox-shape" data-value="round">
+              <div class="cd-cfg-visual-card cd-cfg-visual-card--shape">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="2"/></svg>
+                <div class="cd-cfg-visual-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <span class="cd-cfg-visual-label">Round</span>
+            </div>
           </div>
         </div>
       </div>
@@ -4221,8 +4298,8 @@
           <div class="cd-cfg-summary-value">Aged Bronze</div>
         </div>
         <div class="cd-cfg-summary-group">
-          <div class="cd-cfg-summary-group-label">Button Layout &amp; Engraving</div>
-          <div class="cd-cfg-summary-value">2 Column, T/T, Custom Engraving</div>
+          <div class="cd-cfg-summary-group-label">Button Layout &amp; Personalization</div>
+          <div class="cd-cfg-summary-value">2 Column, T/T, Lutron Suggested</div>
         </div>
       </div>
     </div>
@@ -4255,21 +4332,21 @@
         <div class="cd-cfg-visual-picker">
           <div class="cd-cfg-visual-option selected" data-group="components" data-value="keypad-closure">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-e80fc367-68e3-4003-9127-1de199f4d04e.png" alt="Keypad and Closure Interface">
+              <img src="assets/keypad-palladiom.png" alt="Keypad and Closure Interface">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <span class="cd-cfg-visual-label">Keypad and Closure Interface</span>
           </div>
-          <div class="cd-cfg-visual-option" data-group="components" data-value="button-kit">
+          <div class="cd-cfg-visual-option" data-group="components" data-value="replacement-keypad">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-88914a25-6720-4fc0-be1b-786f9940b7cb.png" alt="Button Kit Only">
+              <img src="assets/keypad-palladiom.png" alt="Replacement Keypad">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
-            <span class="cd-cfg-visual-label">Button Kit Only</span>
+            <span class="cd-cfg-visual-label">Replacement Keypad</span>
           </div>
         </div>
       </div>
@@ -5199,8 +5276,8 @@
           <div class="cd-cfg-summary-value">Aged Bronze</div>
         </div>
         <div class="cd-cfg-summary-row">
-          <div class="cd-cfg-summary-label">Button Layout &amp; Engraving</div>
-          <div class="cd-cfg-summary-value">2 Column, T/T, Custom Engraving</div>
+          <div class="cd-cfg-summary-label">Button Layout &amp; Personalization</div>
+          <div class="cd-cfg-summary-value">2 Column, T/T, Lutron Suggested</div>
         </div>
       </div>
     </div>
@@ -5231,21 +5308,21 @@
         <div class="cd-cfg-visual-picker">
           <div class="cd-cfg-visual-option selected" data-group="components" data-value="keypad-closure">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-e80fc367-68e3-4003-9127-1de199f4d04e.png" alt="Keypad and Closure Interface">
+              <img src="assets/keypad-palladiom.png" alt="Keypad and Closure Interface">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <span class="cd-cfg-visual-label">Keypad and Closure Interface</span>
           </div>
-          <div class="cd-cfg-visual-option" data-group="components" data-value="button-kit">
+          <div class="cd-cfg-visual-option" data-group="components" data-value="replacement-keypad">
             <div class="cd-cfg-visual-card">
-              <img src="assets/raw-88914a25-6720-4fc0-be1b-786f9940b7cb.png" alt="Button Kit Only">
+              <img src="assets/keypad-palladiom.png" alt="Replacement Keypad">
               <div class="cd-cfg-visual-check">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
-            <span class="cd-cfg-visual-label">Button Kit Only</span>
+            <span class="cd-cfg-visual-label">Replacement Keypad</span>
           </div>
         </div>
       </div>
@@ -6302,6 +6379,6 @@
   </div>
 </div>
 
-<script src="app.js?v=187"></script>
+<script src="app.js?v=189"></script>
 </body>
 </html>

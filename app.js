@@ -1482,6 +1482,8 @@ function _makeProductRowFromSearch(modelName, desc) {
     panel.addEventListener('click', function (e) {
       const card = e.target.closest('.cd-ctrl-card');
       if (!card) return;
+      // If card has inline onclick, let it handle navigation; just close panel
+      if (typeof card.onclick === 'function') { closePanel(); return; }
       const name = card.querySelector('.cd-ctrl-card-name')?.textContent.trim() || 'Product';
       const img  = card.querySelector('img')?.src || '';
       // Close panel first
@@ -3363,6 +3365,17 @@ window._openConfigure = function (productName, imgSrc, type) {
   var imgEl  = document.getElementById('cd-cfg-product-img');
   if (nameEl) { nameEl.textContent = productName; nameEl.classList.remove('cd-cfg-product-name--saved'); }
   if (imgEl && imgSrc) { imgEl.src = imgSrc; imgEl.alt = productName; }
+  // Set summary desc from selected component option (keypad default: Keypad and Closure Interface)
+  var descEl = document.getElementById('cd-cfg-desc');
+  if (descEl && type !== 'shade' && type !== 'fixture') {
+    var selOpt = document.querySelector('#cd-cfg-right-scroll .cd-cfg-visual-option.selected .cd-cfg-visual-label');
+    descEl.textContent = 'HomeWorks(QSX), ' + (selOpt ? selOpt.textContent.trim() : 'Keypad and Closure Interface');
+  }
+  // Show Palladiom-only fields only when productName contains 'Palladiom'
+  var isPalladiom = productName.toLowerCase().indexOf('palladiom') !== -1;
+  document.querySelectorAll('#cd-cfg-right-scroll .cd-cfg-palladiom-only').forEach(function(el) {
+    el.style.display = isPalladiom ? '' : 'none';
+  });
   var cfgEl = document.getElementById('cd-configure');
   cfgEl.dataset.sourceRowId = '';
   cfgEl.dataset.productType = type || '';

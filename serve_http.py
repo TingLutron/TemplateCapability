@@ -1,6 +1,6 @@
 import os, http.server, socketserver
 
-ROOT = '/Users/twang/Downloads/Template Wireframes'
+ROOT = '/Users/twang/Documents/Template Wireframes'
 PORT = int(os.environ.get('PORT', 3458))
 
 class Handler(http.server.SimpleHTTPRequestHandler):
